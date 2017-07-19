@@ -1,10 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
-var HTMLWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var entryPoint = './src/main.js';
-var exportPath = path.resolve(__dirname, './build');
+let entryPoint = './src/main.js';
+let exportPath = path.resolve(__dirname, './build');
 var plugins = [];
 
 const extractSass = new ExtractTextPlugin({
