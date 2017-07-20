@@ -7,15 +7,16 @@ var track = new Vue({
         client_secret: 'abd6bacbf41945ae9a1735e089167829',
         spotifyAPI: 'https://api.spotify.com/v1/',
         redirect_uri: 'http://localhost:8888/callback',
-        id_token: 'BQAb0Vo_fFV0BAu-445Eu1ou-VjRXx1TYenFGzvur67w89EJ1F_cRrgPAs4awlmtmmrWDi3UaOjb7NVuyrMEOG3RjdI7Acx-u1N1fRgMKTHsnoQauYAR3Jj8tMhNf4s77be7ipWM-KSsMC-2kdqyM45TYCr_86skPNH_Yz-Blb4gGQI847ehItXUXmGIzhr4_hMa2h7A490yYQHMyDPGag16Nw3YsqPlMYLjuHdOx5LUEygfLW_MUMUNEqf2P7gZM9w3pDDzDeYSUWJWLFRzrlyo98I50T64GjAUMpDeQe-1NnSyOR7KLQ1EEPlpJKT4'
+        id_token: 'BQB7M5QG3PlqpK6G3yGanqzQShRXvz2oPCKzSgEXso-1XG6qyUmYxD4TMOkEL1a85nJ7vgIIDG0JhQ0vO2ieKsKQIAaW6CtEMdp0SLXeqcNHDkpgbnMWHMOU0Xv3zQQqZlLsmwJduD7y5U-Te3xGL9XXh3phbG_ySXxzmmyr_W5ct1JYn6an8kpbWJnoKGXNJiuxZBuGYQiIJWbUhM5sWALgF864GRLphkpB2AIM91SwhMbdliZeW7knhsXr4HoufWxEU8rmDO2Eqi_f5JhC0DAHuYqkM9bKYH17z9fkrE9akC_CGg-jU3cpJU9Zh-Oi',
+        tracks: []
     },
 
     methods: {
         myTracks: function() {
-            console.log('myTrackshello')
             var savedTrackUrl = this.spotifyAPI + 'me/tracks';
-            this.$http.get(savedTrackUrl, {headers: {Authorization: 'Bearer BQAb0Vo_fFV0BAu-445Eu1ou-VjRXx1TYenFGzvur67w89EJ1F_cRrgPAs4awlmtmmrWDi3UaOjb7NVuyrMEOG3RjdI7Acx-u1N1fRgMKTHsnoQauYAR3Jj8tMhNf4s77be7ipWM-KSsMC-2kdqyM45TYCr_86skPNH_Yz-Blb4gGQI847ehItXUXmGIzhr4_hMa2h7A490yYQHMyDPGag16Nw3YsqPlMYLjuHdOx5LUEygfLW_MUMUNEqf2P7gZM9w3pDDzDeYSUWJWLFRzrlyo98I50T64GjAUMpDeQe-1NnSyOR7KLQ1EEPlpJKT4' }}).then(result => {
-                    console.log(result.body)
+            this.$http.get(savedTrackUrl, {headers: {Authorization: 'Bearer BQB7M5QG3PlqpK6G3yGanqzQShRXvz2oPCKzSgEXso-1XG6qyUmYxD4TMOkEL1a85nJ7vgIIDG0JhQ0vO2ieKsKQIAaW6CtEMdp0SLXeqcNHDkpgbnMWHMOU0Xv3zQQqZlLsmwJduD7y5U-Te3xGL9XXh3phbG_ySXxzmmyr_W5ct1JYn6an8kpbWJnoKGXNJiuxZBuGYQiIJWbUhM5sWALgF864GRLphkpB2AIM91SwhMbdliZeW7knhsXr4HoufWxEU8rmDO2Eqi_f5JhC0DAHuYqkM9bKYH17z9fkrE9akC_CGg-jU3cpJU9Zh-Oi' }}).then(result => {
+               this.tracks = result.body.items;
+               console.log(tracks);
                 }, err => {
                     this.error = true;
                     console.log('sdfdfdfd')

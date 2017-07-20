@@ -3,8 +3,8 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-let entryPoint = './src/main.js';
-let exportPath = path.resolve(__dirname, './build');
+var entryPoint = './src/main.js';
+var exportPath = path.resolve(__dirname, './build');
 var plugins = [];
 
 const extractSass = new ExtractTextPlugin({

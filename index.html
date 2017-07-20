@@ -10,6 +10,11 @@
 </head>
 <body>
     <main id="main">
+        <ul>
+           <li v-for="item in tracks">
+               {{ item.track.name }}
+           </li>
+        </ul>
         
     </main>
    <script src="./src/main.js"></script> 
