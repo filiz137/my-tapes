@@ -7,27 +7,56 @@ var track = new Vue({
         client_secret: 'abd6bacbf41945ae9a1735e089167829',
         spotifyAPI: 'https://api.spotify.com/v1/',
         redirect_uri: 'http://localhost:8888/callback',
-        id_token: 'BQB7M5QG3PlqpK6G3yGanqzQShRXvz2oPCKzSgEXso-1XG6qyUmYxD4TMOkEL1a85nJ7vgIIDG0JhQ0vO2ieKsKQIAaW6CtEMdp0SLXeqcNHDkpgbnMWHMOU0Xv3zQQqZlLsmwJduD7y5U-Te3xGL9XXh3phbG_ySXxzmmyr_W5ct1JYn6an8kpbWJnoKGXNJiuxZBuGYQiIJWbUhM5sWALgF864GRLphkpB2AIM91SwhMbdliZeW7knhsXr4HoufWxEU8rmDO2Eqi_f5JhC0DAHuYqkM9bKYH17z9fkrE9akC_CGg-jU3cpJU9Zh-Oi',
-        tracks: []
+        id_token: 'BQD7_G2pKLZYkUGLIVfFOanz5yJ-bpUeorItHiKwD8MSx4hc13gaW3LjM5jQa5SfjIn1DrkqKSqxOxJlWX9xO1Z1VamuiGcSQLgz15pi1osRZe3Se6Uni-Mc9OTTTWX1s801EEfYkaiQxvlILqo04HAsI7igENIoJylshKbBxEtrApg6RTtTCLOXvQKOcB7e-JuyjjqcZl8wZ65wuRqv0IVo3hmAzlqdGO_tAym4L5fWP2_ebAn-7uc1hAdkRB2X6ajPEGDHPCBBIjWaNp-mSjoci4SRG4HjNsNfqxNLl2Vgj5drZ1f0v_w75NVL9rGn',
+        albums: [],
+        next: null,
+        previous: null
+
     },
 
     methods: {
-        myTracks: function() {
-            var savedTrackUrl = this.spotifyAPI + 'me/tracks';
-            this.$http.get(savedTrackUrl, {headers: {Authorization: 'Bearer BQB7M5QG3PlqpK6G3yGanqzQShRXvz2oPCKzSgEXso-1XG6qyUmYxD4TMOkEL1a85nJ7vgIIDG0JhQ0vO2ieKsKQIAaW6CtEMdp0SLXeqcNHDkpgbnMWHMOU0Xv3zQQqZlLsmwJduD7y5U-Te3xGL9XXh3phbG_ySXxzmmyr_W5ct1JYn6an8kpbWJnoKGXNJiuxZBuGYQiIJWbUhM5sWALgF864GRLphkpB2AIM91SwhMbdliZeW7knhsXr4HoufWxEU8rmDO2Eqi_f5JhC0DAHuYqkM9bKYH17z9fkrE9akC_CGg-jU3cpJU9Zh-Oi' }}).then(result => {
-               this.tracks = result.body.items;
-               console.log(tracks);
+        myAlbums: function(next) {
+            var vm = this;
+
+            if ( typeof(next) == 'undefined' ) {
+                var savedAlbumUrl = vm.spotifyAPI + 'me/albums';
+            } else {
+                var savedAlbumUrl = next;
+            }
+            
+            vm.$http.get(savedAlbumUrl, {headers: {Authorization: 'Bearer ' + vm.id_token }}).then(result => {
+               vm.albums = vm.albums.concat(result.body.items);
+               vm.next = result.body.next;
                 }, err => {
-                    this.error = true;
-                    console.log('sdfdfdfd')
+                    vm.error = true;
+                    console.log('error')
                 });
-        }
+        },
+        // sort: function () {
+        //     vm.albums.album.name.sort(vm.sortAlphaNum);
+        // },
+        // reverse: function () {
+        //     vm.albums.album.name.reverse();
+        // },
+        // sortAlphaNum: function (a,b) {
+        //     var reA = /[^a-zA-Z]/g;
+        //         var reN = /[^0-9]/g;
+        //     var aA = a.name.replace(reA, "");
+        //     var bA = b.name.replace(reA, "");
+        //     if(aA === bA) {
+        //         var aN = parseInt(a.name.replace(reN, ""), 10);
+        //         var bN = parseInt(b.name.replace(reN, ""), 10);
+        //         return aN === bN ? 0 : aN > bN ? 1 : -1;
+        //     } else {
+        //         return aA > bA ? 1 : -1;
+        //     }
+        // }
         
     },
     filters: {}
 })
 
 
-track.myTracks();
+track.myAlbums();
 
 

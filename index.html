@@ -10,13 +10,14 @@
 </head>
 <body>
     <main id="main">
-        <ul>
-           <li v-for="item in tracks">
-               {{ item.track.name }}
+        <span v-on:click="myAlbums(next)" v-if="next">load more >></span> 
+        <ul style="list-style-type: decimal">
+           <li v-for="item in albums">
+               <div>{{ item.album.name }}</div>
+               <img v-bind:src="item.album.images[2].url" alt="">
            </li>
         </ul>
         
     </main>
-   <script src="./src/main.js"></script> 
 </body>
 </html>
