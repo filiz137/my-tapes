@@ -1,5 +1,7 @@
 'use strict';
 
+import './scss/main.scss';
+
 var track = new Vue({
     el: '#main',
     data: {
@@ -7,7 +9,7 @@ var track = new Vue({
         client_secret: 'abd6bacbf41945ae9a1735e089167829',
         spotifyAPI: 'https://api.spotify.com/v1/',
         redirect_uri: 'http://localhost:8888/callback',
-        id_token: 'BQD7_G2pKLZYkUGLIVfFOanz5yJ-bpUeorItHiKwD8MSx4hc13gaW3LjM5jQa5SfjIn1DrkqKSqxOxJlWX9xO1Z1VamuiGcSQLgz15pi1osRZe3Se6Uni-Mc9OTTTWX1s801EEfYkaiQxvlILqo04HAsI7igENIoJylshKbBxEtrApg6RTtTCLOXvQKOcB7e-JuyjjqcZl8wZ65wuRqv0IVo3hmAzlqdGO_tAym4L5fWP2_ebAn-7uc1hAdkRB2X6ajPEGDHPCBBIjWaNp-mSjoci4SRG4HjNsNfqxNLl2Vgj5drZ1f0v_w75NVL9rGn',
+        id_token: 'BQB7L9dp9-4sva7Qk2C16d0PvrptmImTZww1cuksEM4gkEV0GzPGKCQdOE25ReuagwepW0VqLWSKHVaFcjgrgv2g5-v6Myh8fxZ4AVH5pRvZF8SPluZnT-D4qvHMTwb-mgGNvLFQ9G19ixXt44KX2FRg3Ogszli5XQzp_cZoL7Ih2SyM5gO7tRorjQQcpfgB_87EOg7KHkv1UsvC4vr2xrK22L-EcyFYYOIIPMuNsIJaZ6uY4KaCcG38J0N-HW8vyX2AWS1c3cAEVqe4BjhGHFOoQ5laLL8klrO83Sag-lxAh6LREYrpYU9iXjbzTwNf',
         albums: [],
         next: null,
         previous: null
@@ -19,7 +21,7 @@ var track = new Vue({
             var vm = this;
 
             if ( typeof(next) == 'undefined' ) {
-                var savedAlbumUrl = vm.spotifyAPI + 'me/albums';
+                var savedAlbumUrl = vm.spotifyAPI + 'me/albums' + '?limit=10';
             } else {
                 var savedAlbumUrl = next;
             }
@@ -32,25 +34,22 @@ var track = new Vue({
                     console.log('error')
                 });
         },
-        // sort: function () {
-        //     vm.albums.album.name.sort(vm.sortAlphaNum);
-        // },
-        // reverse: function () {
-        //     vm.albums.album.name.reverse();
-        // },
-        // sortAlphaNum: function (a,b) {
-        //     var reA = /[^a-zA-Z]/g;
-        //         var reN = /[^0-9]/g;
-        //     var aA = a.name.replace(reA, "");
-        //     var bA = b.name.replace(reA, "");
-        //     if(aA === bA) {
-        //         var aN = parseInt(a.name.replace(reN, ""), 10);
-        //         var bN = parseInt(b.name.replace(reN, ""), 10);
-        //         return aN === bN ? 0 : aN > bN ? 1 : -1;
-        //     } else {
-        //         return aA > bA ? 1 : -1;
-        //     }
-        // }
+        sort: function(arr) {
+            arr.sort(function(a, b) {
+            var nameA = a.album.name.toUpperCase();
+            var nameB = b.album.name.toUpperCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            return 0;
+            });
+
+            // return arr.sort();
+        }
         
     },
     filters: {}

@@ -1,0 +1,36 @@
+@import 'reset.css';
+
+.albums {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &-item {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgba(49,49,49,0.06);
+        box-shadow: -2px 4px 8px 0 rgba(49,49,49,0.08);
+        border-radius: 2px;
+        &:after {
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background-image: linear-gradient(225deg, rgba(255,255,255,0.00) 0%, rgba(149,149,149,0.80) 51%, rgba(49,49,49,0.60) 100%), url(/src/img/noise.svg);
+            background-size: 100%;
+            box-shadow: inset 0 0 20px 0 rgba(49,49,49,.6);
+            opacity: .2;
+        }
+    }
+    &-cover {
+        width: 300px;
+        height: auto;
+        border-radius: 2px;
+        
+    }
+}
