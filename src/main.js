@@ -2,60 +2,87 @@
 
 import './scss/main.scss';
 
-var track = new Vue({
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
+
+import AlbumImage from './components/AlbumImage.vue';
+
+Vue.config.productionTip = false;
+
+Vue.use(VueResource);
+Vue.use(VueRouter);
+
+const routes = [
+    { path: '', component: AlbumImage }
+];
+
+const router = new VueRouter({
+    // mode: 'history',
+    routes
+});
+
+var albums = new Vue({
+    router,
     el: '#main',
-    data: {
-        client_id: 'ec5b37e8f5744f93866f7463c83989a6',
-        client_secret: 'abd6bacbf41945ae9a1735e089167829',
-        spotifyAPI: 'https://api.spotify.com/v1/',
-        redirect_uri: 'http://localhost:8888/callback',
-        id_token: 'BQB7L9dp9-4sva7Qk2C16d0PvrptmImTZww1cuksEM4gkEV0GzPGKCQdOE25ReuagwepW0VqLWSKHVaFcjgrgv2g5-v6Myh8fxZ4AVH5pRvZF8SPluZnT-D4qvHMTwb-mgGNvLFQ9G19ixXt44KX2FRg3Ogszli5XQzp_cZoL7Ih2SyM5gO7tRorjQQcpfgB_87EOg7KHkv1UsvC4vr2xrK22L-EcyFYYOIIPMuNsIJaZ6uY4KaCcG38J0N-HW8vyX2AWS1c3cAEVqe4BjhGHFOoQ5laLL8klrO83Sag-lxAh6LREYrpYU9iXjbzTwNf',
-        albums: [],
-        next: null,
-        previous: null
+    data: {}
+});
 
-    },
 
-    methods: {
-        myAlbums: function(next) {
-            var vm = this;
+// var albums = new Vue({
+//     el: '#main',
+//     data: {
+//         client_id: 'ec5b37e8f5744f93866f7463c83989a6',
+//         client_secret: 'abd6bacbf41945ae9a1735e089167829',
+//         spotifyAPI: 'https://api.spotify.com/v1/',
+//         redirect_uri: 'http://localhost:8888/callback',
+//         id_token: 'BQDDhTNvqF1ckvt03mXxJ6_8cKJmfglDvucxS0xdiZVe6suNorqM0S4Vz4LwKmy_ZRxYqLmSs24yn43rnlZ1P3-C75adT6NIzF7P2QrHSPEmMODgeDyDi8mQrud1FFBVPI-_a3hRT9VIjPKD6qom5RBF5Zj5VNJA9JLb0LxT2kEvsBzzJiFlGr85PWiKcIBubeARm_c3bOMeB2XCo1miD5x7uMk_bmlksi9olOLQVBq8EQyQ2KHJxmB4sp8IGcQAZWx-vvvGlHBZ1wzpCOLpLbpTBlLkgGOAOMzqpLBx4xWCtjkDE_ckKAF-SxddiR0U',
+//         albums: [],
+//         next: null,
+//         previous: null
 
-            if ( typeof(next) == 'undefined' ) {
-                var savedAlbumUrl = vm.spotifyAPI + 'me/albums' + '?limit=10';
-            } else {
-                var savedAlbumUrl = next;
-            }
+//     },
+
+//     methods: {
+//         myAlbums: function(next) {
+//             var vm = this;
+
+//             if ( typeof(next) == 'undefined' ) {
+//                 var savedAlbumUrl = vm.spotifyAPI + 'me/albums' + '?limit=10';
+//             } else {
+//                 var savedAlbumUrl = next;
+//             }
             
-            vm.$http.get(savedAlbumUrl, {headers: {Authorization: 'Bearer ' + vm.id_token }}).then(result => {
-               vm.albums = vm.albums.concat(result.body.items);
-               vm.next = result.body.next;
-                }, err => {
-                    vm.error = true;
-                    console.log('error')
-                });
-        },
-        sort: function(arr) {
-            arr.sort(function(a, b) {
-            var nameA = a.album.name.toUpperCase();
-            var nameB = b.album.name.toUpperCase();
-            if (nameA < nameB) {
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-            }
+//             vm.$http.get(savedAlbumUrl, {headers: {Authorization: 'Bearer ' + vm.id_token }}).then(result => {
+//                vm.albums = vm.albums.concat(result.body.items);
+//                vm.next = result.body.next;
+//                 }, err => {
+//                     vm.error = true;
+//                     console.log('error')
+//                 });
+//         },
+//         sort: function(arr) {
+//             arr.sort(function(a, b) {
+//             var nameA = a.album.name.toUpperCase();
+//             var nameB = b.album.name.toUpperCase();
+//             if (nameA < nameB) {
+//                 return -1;
+//             }
+//             if (nameA > nameB) {
+//                 return 1;
+//             }
 
-            return 0;
-            });
+//             return 0;
+//             });
 
-            // return arr.sort();
-        }
+//             // return arr.sort();
+//         }
         
-    },
-    filters: {}
-})
+//     },
+//     filters: {}
+// })
 
 
-track.myAlbums();
+// albums.myAlbums();
 
 

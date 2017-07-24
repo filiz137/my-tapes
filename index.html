@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Tapes</title>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+
 </head>
 <body>
     <main id="main">
-        <span v-on:click="myAlbums(next)" v-if="next">load more >></span> 
+        <router-view></router-view>
+
+        <!-- <span v-on:click="myAlbums(next)" v-if="next">load more >></span> 
         <span v-on:click="sort(albums)">Sort</span>
         <ul class="albums">
            <li class="albums-item" v-for="item in albums">
-               <!-- <div>{{ item.album.name }}</div> -->
+               <div>{{ item.album.name }}</div>
                <img class="albums-cover" v-bind:src="item.album.images[1].url" alt="">
            </li>
-        </ul>
-        
+        </ul> -->
     </main>
 </body>
 </html>
