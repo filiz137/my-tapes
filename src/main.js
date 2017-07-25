@@ -6,7 +6,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
-import AlbumImage from './components/AlbumImage.vue';
+import globalData from "./config.js";
+import AlbumImage from './components/albums/albums.vue';
 
 Vue.config.productionTip = false;
 
@@ -22,7 +23,7 @@ const router = new VueRouter({
     routes
 });
 
-var albums = new Vue({
+var albums = new globalData({
     router,
     el: '#main',
     data: {}
