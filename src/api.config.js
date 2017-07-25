@@ -7,7 +7,7 @@ var globalData = Vue.extend({
                 client_secret: 'abd6bacbf41945ae9a1735e089167829',
                 spotifyAPI: 'https://api.spotify.com/v1/',
                 redirect_uri: 'http://localhost:8888/callback',
-                id_token: 'BQCTsGyV_KsP5P2Tg85ePabs3AcFAh_GR9PLj0kGIQ9A_IYrmWZe_4CdREem_7-XyAELjQCenPEQNmk6dRgDDMQrtsnNUe9SFHaNckFJWSFI5cItZ99YQzXZbFeh2gutABphAU0NajuPebfJptFW96iGMT2xmm8VCJH5J9sREMsguoWUi6WEtxsaU-8HBRPjxMNkbWBRtEf4gp8A5If68ycdiitZmP3vZzlcebrcjuPSfjJvfSiC0mM8G5Rf6ZvF4PXupjsRG8Z3jP4jt6WYysVVNmDdovuUGzW6dRFCw8AbcBV6Atm3ysgw7MkUnPCb',
+                id_token: 'BQCijxNF5P1BaceZSlZ-uk8EB_5osNtAMleGP45UPpaV7BK2u0DiUtUtwjXpU4RnHy-0rU8-wCBFOKCgGTGRPgiWbcLdrBFy20WgZHNgRbQz-pkHDXZeIHPpnjfITSU_-ze8D5zo4QqFIW6oWUjKzdJOL1KMkLdlTXJtfXw9k9SSp1lD5N6QJxW_X1NdhBvrA5qNUq2YU-5OHyXPYE29ln0tyiNJRggGPKy9GVH73RqWnABZzsqtBBDxYsIm4-1E6xb1WNa4JhKJsIKEgiYlUdAcrbhUmf4VmMSnrLGFI9vIqagt1KyJJUNVXaf5N0sZ',
         }
     }
 });

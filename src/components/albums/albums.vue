@@ -10,7 +10,7 @@
 <script>
 
     import albumVinyl from "../album.vue";
-    import globalData from "../../config.js";
+    import globalData from "../../api.config.js";
 
     export default {
         name: 'albums',

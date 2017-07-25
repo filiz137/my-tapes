@@ -6,7 +6,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
-import globalData from "./config.js";
+import globalData from "./api.config.js";
 import AlbumImage from './components/albums/albums.vue';
 
 Vue.config.productionTip = false;
