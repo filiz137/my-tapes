@@ -8,6 +8,7 @@ import VueResource from 'vue-resource';
 
 import globalData from "./api.config.js";
 import AlbumImage from './components/albums/albums.vue';
+import TracksList from './components/tracks/tracks.vue';
 
 Vue.config.productionTip = false;
 
@@ -15,7 +16,8 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '', component: AlbumImage }
+    { path: '/album/', component: AlbumImage },
+    { path: '/tracks/', component: TracksList }
 ];
 
 const router = new VueRouter({
